@@ -7,11 +7,11 @@ namespace Abstract
     public class Tiles : AbstractObject
     {
         public List<Vector2> Positions;
-        public Tiles(Asset asset, int kind, List<Vector2> positions) :
+        public Tiles(Asset asset, int type, List<Vector2> positions) :
             base(asset, Vector2.Zero)
         {
             Positions = positions;
-            ChangeFrame(kind);
+            ChangeFrame(type);
         }
 
         public override void Update()

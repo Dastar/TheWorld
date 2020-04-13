@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Abstract;
+using System.Collections.Generic;
 
 namespace SheepGame.Desktop
 {
@@ -11,11 +13,13 @@ namespace SheepGame.Desktop
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Zoo _sheeps;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsFixedTimeStep = false;
         }
 
         /// <summary>
@@ -30,7 +34,7 @@ namespace SheepGame.Desktop
 
             base.Initialize();
         }
-
+        Map myMap = new Map();
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -41,6 +45,12 @@ namespace SheepGame.Desktop
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Asset a = new Asset(Content.Load<Texture2D>("sheep"), 5, 4);
+            _sheeps = new Zoo(new List<Asset>() { a });
+            _sheeps.CreateAnimals(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            Asset b = new Asset(Content.Load<Texture2D>("tiles"), 2, 2);
+            myMap.CreateTiles(b);
+
         }
 
         /// <summary>
@@ -52,6 +62,9 @@ namespace SheepGame.Desktop
             // TODO: Unload any non ContentManager content here
         }
 
+        double delta = 0;
+        double delta2 = 0;
+        bool foo = true;
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -63,6 +76,20 @@ namespace SheepGame.Desktop
                 Exit();
 
             // TODO: Add your update logic here
+            delta += gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (delta >= 250)
+            {
+                delta2 += delta;
+                delta = 0;
+                _sheeps.Update();
+            }
+
+            if (foo)
+            {
+                foo = false;
+                //delta2 = 0;
+                _sheeps.Move(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            }
 
             base.Update(gameTime);
         }
@@ -73,9 +100,11 @@ namespace SheepGame.Desktop
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
+            myMap.Draw(spriteBatch);
+            _sheeps.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }
