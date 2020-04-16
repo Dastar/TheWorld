@@ -34,7 +34,7 @@ namespace SheepGame.Desktop
 
             base.Initialize();
         }
-        Map myMap = new Map();
+        Map myMap;
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -49,7 +49,8 @@ namespace SheepGame.Desktop
             _sheeps = new Zoo(new List<Asset>() { a });
             _sheeps.CreateAnimals(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             Asset b = new Asset(Content.Load<Texture2D>("tiles"), 2, 2);
-            myMap.CreateTiles(b);
+            myMap = new Map(b, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            myMap.GenerateMapFromXML("../../../../maps/defaultMap.xml");
 
         }
 
@@ -100,7 +101,7 @@ namespace SheepGame.Desktop
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
             myMap.Draw(spriteBatch);

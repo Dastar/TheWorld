@@ -1,0 +1,8 @@
+<XnaContent xmlns:ns="Microsoft.Xna.Framework">
+  <Asset Type="XMLReadeer.MapTail">
+    <LLL>
+      <Item>1</Item>
+      <Item>2</Item>
+    </LLL>
+  </Asset>
+</XnaContent>

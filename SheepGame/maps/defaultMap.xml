@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Map name="Default Map" dimension="12,7">
+    <Line x="0">
+        <Tile y="0" type="3"></Tile>
+        <Tile y="1" type="3"></Tile>
+        <Tile y="2" type="1"></Tile>
+        <Tile y="3" type="0"></Tile>
+        <Tile y="4" type="1"></Tile>
+        <Tile y="5" type="0"></Tile>
+        <Tile y="6" type="1"></Tile>
+    </Line>
+    <Line x="1">
+        <Tile y="0" type="2"></Tile>
+        <Tile y="1" type="2"></Tile>
+        <Tile y="2" type="0"></Tile>
+        <Tile y="3" type="0"></Tile>
+        <Tile y="4" type="3"></Tile>
+        <Tile y="5" type="3"></Tile>
+        <Tile y="6" type="0"></Tile>
+    </Line>
+    <Line x="2">
+        <Tile y="0" type="1"></Tile>
+        <Tile y="1" type="1"></Tile>
+        <Tile y="2" type="1"></Tile>
+        <Tile y="3" type="1"></Tile>
+        <Tile y="4" type="2"></Tile>
+        <Tile y="5" type="2"></Tile>
+        <Tile y="6" type="1"></Tile>
+    </Line>
+    <Line x="3">
+        <Tile y="0" type="1"></Tile>
+        <Tile y="1" type="2"></Tile>
+        <Tile y="2" type="2"></Tile>
+        <Tile y="3" type="1"></Tile>
+        <Tile y="4" type="0"></Tile>
+        <Tile y="5" type="0"></Tile>
+        <Tile y="6" type="1"></Tile>
+    </Line>
+    <Line x="4">
+        <Tile y="0" type="1"></Tile>
+        <Tile y="1" type="0"></Tile>
+        <Tile y="2" type="2"></Tile>
+        <Tile y="3" type="1"></Tile>
+        <Tile y="4" type="1"></Tile>
+        <Tile y="5" type="1"></Tile>
+        <Tile y="6" type="2"></Tile>
+    </Line>
+    <Line x="5">
+        <Tile y="0" type="2"></Tile>
+        <Tile y="1" type="0"></Tile>
+        <Tile y="2" type="2"></Tile>
+        <Tile y="3" type="0"></Tile>
+        <Tile y="4" type="1"></Tile>
+        <Tile y="5" type="1"></Tile>
+        <Tile y="6" type="0"></Tile>
+    </Line>
+    <Line x="6">
+        <Tile y="0" type="3"></Tile>
+        <Tile y="1" type="0"></Tile>
+        <Tile y="2" type="2"></Tile>
+        <Tile y="3" type="3"></Tile>
+        <Tile y="4" type="3"></Tile>
+        <Tile y="5" type="2"></Tile>
+        <Tile y="6" type="1"></Tile>
+    </Line>
+    <Line x="7">
+        <Tile y="0" type="2"></Tile>
+        <Tile y="1" type="0"></Tile>
+        <Tile y="2" type="2"></Tile>
+        <Tile y="3" type="0"></Tile>
+        <Tile y="4" type="2"></Tile>
+        <Tile y="5" type="1"></Tile>
+        <Tile y="6" type="3"></Tile>
+    </Line>
+    <Line x="8">
+        <Tile y="0" type="3"></Tile>
+        <Tile y="1" type="1"></Tile>
+        <Tile y="2" type="3"></Tile>
+        <Tile y="3" type="0"></Tile>
+        <Tile y="4" type="0"></Tile>
+        <Tile y="5" type="2"></Tile>
+        <Tile y="6" type="3"></Tile>
+    </Line>
+    <Line x="9">
+        <Tile y="0" type="1"></Tile>
+        <Tile y="1" type="0"></Tile>
+        <Tile y="2" type="2"></Tile>
+        <Tile y="3" type="1"></Tile>
+        <Tile y="4" type="1"></Tile>
+        <Tile y="5" type="2"></Tile>
+        <Tile y="6" type="3"></Tile>
+    </Line>
+    <Line x="10">
+        <Tile y="0" type="0"></Tile>
+        <Tile y="1" type="1"></Tile>
+        <Tile y="2" type="3"></Tile>
+        <Tile y="3" type="2"></Tile>
+        <Tile y="4" type="3"></Tile>
+        <Tile y="5" type="2"></Tile>
+        <Tile y="6" type="0"></Tile>
+    </Line>
+    <Line x="11">
+        <Tile y="0" type="0"></Tile>
+        <Tile y="1" type="3"></Tile>
+        <Tile y="2" type="3"></Tile>
+        <Tile y="3" type="3"></Tile>
+        <Tile y="4" type="2"></Tile>
+        <Tile y="5" type="3"></Tile>
+        <Tile y="6" type="0"></Tile>
+    </Line>
+</Map>
