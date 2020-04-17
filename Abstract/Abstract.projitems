@@ -13,6 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)AbstractObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Character.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Asset.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Content\" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Map name="Default Map" dimension="12,7">
     <Line x="0">
-        <Tile y="0" type="3"></Tile>
+        <Tile y="0" type="3"/>
         <Tile y="1" type="3"></Tile>
         <Tile y="2" type="1"></Tile>
         <Tile y="3" type="0"></Tile>

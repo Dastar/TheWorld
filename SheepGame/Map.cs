@@ -1,6 +1,4 @@
-﻿using System;
-using System.Xml;
-using System.Collections.Generic;
+﻿using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Abstract;
@@ -9,61 +7,80 @@ namespace SheepGame.Desktop
 {
     public class Map: AbstractObject
     {
-        private string _name;
-        private readonly Tiles[] _positions;
-        private int _mapWidth;
-        private int _mapHeight;
-        private int _screenWidth;
-        private int _screenHeight;
+        #region Fields
+        public int MapWidth { get; private set; }
+        public int MapHeight { get; private set; }
+        private Tiles _tiles;
 
-        private readonly string line = "Line";
-        private readonly string x = "x";
-        private readonly string y = "y";
-        private readonly string name = "name";
-        private readonly string type = "type";
-        private readonly string dimension = "dimension";
+        private readonly int _screenWidth;
+        private readonly int _screenHeight;
 
-        public Map(Asset asset, int screenWidth, int screenHeight): base(asset, Vector2.Zero)
+        public string MapName { get; private set; }
+        #endregion
+
+        #region XML Tags
+        private readonly string XMLLine = "Line";
+        private readonly string XMLX = "x";
+        private readonly string XMLY = "y";
+        private readonly string XMLName = "name";
+        private readonly string XMLType = "type";
+        private readonly string XMLDimension = "dimension";
+        private readonly string XMLMap = "Map";
+        private readonly char XMLDelimeter = ',';
+        #endregion
+
+        public Map(Asset asset, int screenWidth, int screenHeight): 
+            base(asset, Vector2.Zero)
         {
-            _positions = new Tiles[asset.TotalFrames];
-            for (int frame = 0; frame < asset.TotalFrames; frame++)
-            {
-                _positions[frame] = new Tiles(frame);
-            }
-
             _screenWidth = screenWidth;
             _screenHeight = screenHeight;
         }
 
 
-        // Throws: XmlReader, int.Parse 
+        /// <summary>
+        /// Generates the map from xml.
+        /// </summary>
+        /// <param name="link">link to xmp-map</param>
+        /// <exception>From XmlReader and int.Parse</exception>
         public void GenerateMapFromXML(string link)
         {
             using (var reader = XmlReader.Create(link))
             {
-                reader.Read();
-                reader.Read();
-                reader.Read();
+                while (reader.Name != XMLMap)
+                {
+                    reader.Read();
+                }
 
-                _name = reader.GetAttribute(name);
-                var d = reader.GetAttribute(dimension).Split(',');
-                _mapWidth = int.Parse(d[0]) * _width;
-                _mapHeight = int.Parse(d[1]) * _height;
+                // Geting map parameters
+                MapName = reader.GetAttribute(XMLName);
+                var dimension = reader.GetAttribute(XMLDimension).Split(XMLDelimeter);
 
+                int dimensionX = int.Parse(dimension[0]);
+                int dimensionY = int.Parse(dimension[1]);
+
+                _tiles = new Tiles(dimensionX, dimensionY);
+
+                MapWidth = dimensionX * _width;
+                MapHeight = dimensionY * _height;
+
+                // Generating map from xml
                 while (reader.Read())
                 {
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name == line)
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == XMLLine)
                     {
-                        var x_point = int.Parse(reader.GetAttribute(x));
+                        var x = int.Parse(reader.GetAttribute(XMLX));
                         do
                         {
                             reader.Read();
                             if (reader.NodeType != XmlNodeType.Element) continue;
-                            var y_point = int.Parse(reader.GetAttribute(y));
-                            var tile_type = int.Parse(reader.GetAttribute(type));
-                            _positions[tile_type].Add(x_point * _width, y_point * _height);
+
+                            var y = int.Parse(reader.GetAttribute(XMLY));
+                            var type = int.Parse(reader.GetAttribute(XMLType));
+
+                            Tile tile = new Tile(new Vector2(x * _width, y * _height), type);
+                            _tiles[x, y] = tile;
                         }
-                        while (reader.Name != line || reader.NodeType != XmlNodeType.EndElement);
+                        while (reader.Name != XMLLine || reader.NodeType != XmlNodeType.EndElement);
 
                     }
 
@@ -73,27 +90,35 @@ namespace SheepGame.Desktop
             
         }
 
+        public void ChangeDimension(int width, int height)
+        {
+           
+
+        }
+
         public new void Draw(SpriteBatch spriteBatch)
         {
+            // If the map is smaller then the screen, put the map in the 
+            // middle of the screen
+            // TODO: when the map is bigger then the screen
             var xFactor = 0;
-            if (_screenWidth > _mapWidth)
-                xFactor = (_screenWidth - _mapWidth) / 2;
+            if (_screenWidth > MapWidth)
+                xFactor = (_screenWidth - MapWidth) / 2;
 
             var yFactor = 0;
-            if (_screenHeight > _mapHeight)
-                yFactor = (_screenHeight - _mapHeight) / 2;
+            if (_screenHeight > MapHeight)
+                yFactor = (_screenHeight - MapHeight) / 2;
 
             Vector2 factor = new Vector2(xFactor, yFactor);
+
             spriteBatch.Begin();
-            foreach (var tile in _positions)
+            foreach (Tile tile in _tiles)
             {
                 ChangeFrame(tile.Type);
                 var sourceRectangle = SourceRectangle();
-                foreach (var p in tile.Positions)
-                {
-                    _position = p + factor;
-                    spriteBatch.Draw(_texture.Texture, DestinationRectangle(), sourceRectangle, Color.White);
-                }
+                _position = tile.Position + factor;
+
+                spriteBatch.Draw(_texture.Texture, DestinationRectangle(), sourceRectangle, Color.White);
 
             }
             spriteBatch.End();

@@ -8,7 +8,7 @@ namespace SheepGame.Desktop
 {
     public class Zoo
     {
-        private List<Character> _animals = new List<Character>();
+        private List<NPC> _animals = new List<NPC>();
         private List<Asset> _assets;
         private Random rnd = new Random();
 
@@ -17,12 +17,12 @@ namespace SheepGame.Desktop
             _assets = assets;
         }
 
-        public void CreateAnimals(int windowWidth, int windowHeight)
+        public void CreateAnimals(int mapWidth, int mapHeight)
         {
             for (int i = 0; i < 2; i++)
             {
-                Vector2 position = new Vector2(rnd.Next(windowWidth - 64), rnd.Next(windowHeight - 64));
-                _animals.Add(new Character(_assets[rnd.Next(_assets.Count)], position));
+                Vector2 position = new Vector2(rnd.Next(mapWidth), rnd.Next(mapHeight));
+                _animals.Add(new NPC(_assets[rnd.Next(_assets.Count)], position));
             }
         }
 
