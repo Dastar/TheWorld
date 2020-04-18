@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Asset.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ITile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Info.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Content\" />

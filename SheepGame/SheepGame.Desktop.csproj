@@ -51,6 +51,7 @@
     <Compile Include="Engine.cs" />
     <Compile Include="NPC.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="MapInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
