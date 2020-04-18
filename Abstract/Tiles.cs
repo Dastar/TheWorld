@@ -6,9 +6,9 @@ namespace SheepGame.Desktop
 {
     public class Tiles
     {
-        public Tile[,] Positions { get; private set; }
+        public ITile[,] Positions { get; private set; }
 
-        public Tile this[int x, int y]
+        public ITile this[int x, int y]
         {
             get
             {
@@ -22,7 +22,7 @@ namespace SheepGame.Desktop
 
         public Tiles(int x, int y)
         {
-            Positions = new Tile[x, y];
+            Positions = new ITile[x, y];
         }
 
         public IEnumerator GetEnumerator()
@@ -30,4 +30,5 @@ namespace SheepGame.Desktop
             return Positions.GetEnumerator();
         }
     }
+
 }

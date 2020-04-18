@@ -90,12 +90,6 @@ namespace SheepGame.Desktop
             
         }
 
-        public void ChangeDimension(int width, int height)
-        {
-           
-
-        }
-
         public new void Draw(SpriteBatch spriteBatch)
         {
             // If the map is smaller then the screen, put the map in the 
@@ -111,15 +105,20 @@ namespace SheepGame.Desktop
 
             Vector2 factor = new Vector2(xFactor, yFactor);
 
+
+            // Drawing
             spriteBatch.Begin();
             foreach (Tile tile in _tiles)
             {
+                // Changing the frame and the position
                 ChangeFrame(tile.Type);
                 var sourceRectangle = SourceRectangle();
                 _position = tile.Position + factor;
 
-                spriteBatch.Draw(_texture.Texture, DestinationRectangle(), sourceRectangle, Color.White);
-
+                spriteBatch.Draw(_texture.Texture, 
+                                DestinationRectangle(), 
+                                sourceRectangle, 
+                                Color.White);
             }
             spriteBatch.End();
         }

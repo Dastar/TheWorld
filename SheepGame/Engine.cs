@@ -29,18 +29,25 @@ namespace SheepGame.Desktop
             var sheep = content.Load<Texture2D>(AssetSheep);
             _zoo = new Zoo(new List<Asset>() { new Asset(sheep, 5, 4) });
             _zoo.CreateAnimals(_map.MapWidth, _map.MapHeight);
-            _zoo.Move(12,7);
+            _zoo.Move(12 * 64, 7 * 64);
+
         }
 
         double delta = 0;
+        bool foo = true;
         public void Update(GameTime gameTime)
         {
             _map.Update();
-
+            delta += gameTime.ElapsedGameTime.TotalMilliseconds;
             if (delta >= 250)
             {
                 delta = 0;
                 _zoo.Update();
+            }
+            if (foo)
+            {
+                foo = false;
+
             }
 
         }

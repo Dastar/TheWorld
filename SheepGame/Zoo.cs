@@ -44,7 +44,7 @@ namespace SheepGame.Desktop
 
         public void Move(int windowWidth, int windowHeight)
         {
-            foreach (var animal in _animals)
+            foreach (NPC animal in _animals)
             {
                 if (animal.Position != MovingPosition.Standing) continue;
                 Vector2 position = new Vector2(rnd.Next(windowWidth), rnd.Next(windowHeight));

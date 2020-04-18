@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Abstract;
 
 namespace SheepGame.Desktop
 {
-    public class Tile
+    public class Tile : ITile
     {
         public Vector2 Position { get; private set; }
         public int Type { get; private set; }

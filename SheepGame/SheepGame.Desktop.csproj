@@ -50,6 +50,7 @@
     <Compile Include="Zoo.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="NPC.cs" />
+    <Compile Include="Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
