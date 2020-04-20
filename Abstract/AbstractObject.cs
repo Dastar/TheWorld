@@ -14,6 +14,10 @@ namespace Abstract
         protected readonly int _height;
         private int _currentFrame;
 
+        public float X => _position.X;
+        public float Y => _position.Y;
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:TheWorld.Desktop.AbstractObject"/> class.
         /// </summary>
@@ -63,11 +67,11 @@ namespace Abstract
         /// Drawing specific frame from the texture. 
         /// </summary>
         /// <param name="spriteBatch">Sprite batch.</param>
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             spriteBatch.Draw(_texture.Texture, DestinationRectangle(), SourceRectangle(), Color.White);
-            spriteBatch.End();
+            //spriteBatch.End();
         }
 
         abstract public void Update();

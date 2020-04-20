@@ -11,10 +11,13 @@ namespace SheepGame.Desktop
         private List<NPC> _animals = new List<NPC>();
         private List<Asset> _assets;
         private Random rnd = new Random();
+        public delegate bool IsFreeMap(int x, int y);
+        private IsFreeMap IsFree;
 
-        public Zoo(List<Asset> assets)
+        public Zoo(List<Asset> assets, IsFreeMap isFree)
         {
             _assets = assets;
+            IsFree = isFree;
         }
 
         public void CreateAnimals(int mapWidth, int mapHeight)
@@ -44,6 +47,7 @@ namespace SheepGame.Desktop
 
         public void Move(int windowWidth, int windowHeight)
         {
+            if (IsFree(0, 0)) return;
             foreach (NPC animal in _animals)
             {
                 if (animal.Position != MovingPosition.Standing) continue;

@@ -3,7 +3,7 @@ using Abstract;
 
 namespace SheepGame.Desktop
 {
-    public class MapInfo: Info
+    public class MapInfo
     {
         public string Name;
         public int MapWidth;

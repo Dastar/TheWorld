@@ -119,12 +119,41 @@ namespace SheepGame.Desktop
                                 DestinationRectangle(), 
                                 sourceRectangle, 
                                 Color.White);
+                if (!(tile.Object is null))
+                {
+                    tile.Object.Draw(spriteBatch);
+                }
             }
             spriteBatch.End();
         }
 
         public override void Update()
         {
+        }
+
+        public bool IsTileFree(int x, int y)
+        {
+            x %= _width;
+            y %= _height;
+
+            return ((Tile)_tiles[x, y]).Object is null;
+        }
+
+        public void PutOnTile(AbstractObject t)
+        {
+            int x = (int)t.X % _width;
+            int y = (int)t.Y % _height;
+
+            ((Tile)_tiles[x, y]).Object = t;
+        }
+
+        public void RemoveFromTile(int x, int y)
+        {
+            x %= _width;
+            y %= _height;
+
+            ((Tile)_tiles[x, y]).Object = null;
+
         }
     }
 }

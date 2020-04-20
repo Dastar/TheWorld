@@ -20,6 +20,8 @@ namespace Abstract
             _destination = position;
         }
 
+        public Character(Character newChar) : this(newChar._texture, newChar._position) { }
+
         public void GoTo(Vector2 destination)
         {
             _destination = destination;

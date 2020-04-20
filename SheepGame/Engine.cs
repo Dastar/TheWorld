@@ -27,7 +27,7 @@ namespace SheepGame.Desktop
             _map.GenerateMapFromXML(DefaultMap);
 
             var sheep = content.Load<Texture2D>(AssetSheep);
-            _zoo = new Zoo(new List<Asset>() { new Asset(sheep, 5, 4) });
+            _zoo = new Zoo(new List<Asset>() { new Asset(sheep, 5, 4) }, _map.IsTileFree);
             _zoo.CreateAnimals(_map.MapWidth, _map.MapHeight);
             _zoo.Move(12 * 64, 7 * 64);
 
@@ -55,7 +55,7 @@ namespace SheepGame.Desktop
         public void Draw(SpriteBatch spriteBatch)
         {
             _map.Draw(spriteBatch);
-            _zoo.Draw(spriteBatch);
+         //   _zoo.Draw(spriteBatch);
         }
     }
 }

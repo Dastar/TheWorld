@@ -8,6 +8,7 @@ namespace SheepGame.Desktop
     {
         public Vector2 Position { get; private set; }
         public int Type { get; private set; }
+        public AbstractObject Object = null;
         public float X => Position.X;
         public float Y => Position.Y;
 

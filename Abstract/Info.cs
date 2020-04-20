@@ -1,15 +1,12 @@
 ﻿using System;
 namespace Abstract
 {
-    public class Info
+    static  class Info
     {
-        protected Info()
-        {
-        }
 
-        public void SetValue(string name, object value)
+        public static void SetValue(object cls, string name, object value)
         {
-            var field = GetType().GetField(name);
+            var field = cls.GetType().GetField(name);
             if (field is null)
             {
                 throw new Exception($"Can't find field {name}");
@@ -18,7 +15,7 @@ namespace Abstract
             try
             {
                 var safeValue = Convert.ChangeType(value, field.FieldType);
-                field.SetValue(this, safeValue);
+                field.SetValue(cls, safeValue);
             }
             catch (Exception ex)
             {
